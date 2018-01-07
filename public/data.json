@@ -1,0 +1,37 @@
+[
+  {
+    "title": "The Name of the Wind",
+    "author": "Patrick Rothfuss",
+    "isbn": "ISBN_13 9780575087057",
+    "image_url": "https://books.google.com/books/content?id=BcG2dVRXKukC&printsec=frontcover&img=1&zoom=5&source=gbs_api",
+    "description": "'I have stolen princesses back from sleeping barrow kings. I burned down the town of Trebon. I have spent the night with Felurian and left with both my sanity and my life. I was expelled from the University at a younger age than most people are allowed in. I tread paths by moonlight that others fear to speak of during day. I have talked to Gods, loved women, and written songs that make the minstrels weep. My name is Kvothe. "
+  },
+  {
+    "title": "Dune",
+    "author": "Frank Herbert",
+    "isbn": "ISBN_13 9780441013593",
+    "image_url": "http://books.google.com/books/content?id=B1hSG45JCX4C&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "description": "Follows the adventures of Paul Atreides, the son of a betrayed duke given up for dead on a treacherous desert planet and adopted by its fierce, nomadic people, who help him unravel his most unexpected destiny."
+  },
+  {
+    "title": "The Left Hand of Darkness",
+    "author": "Ursula K. Le Guid",
+    "isbn": "ISBN_13 9780143111597",
+    "image_url": "http://books.google.com/books/content?id=f9QiDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "description": "A deluxe hardcover edition of the queen of science fiction's trailblazing novel about a planet full of genderless beings--part of Penguin Galaxy, a collectible series of six sci-fi/fantasy classics, featuring a series introduction by Neil Gaiman A groundbreaking work of science fiction, The Left Hand of Darkness tells the story of a lone human emissary's mission to Winter, an unknown alien world whose inhabitants can choose--and change--their gender. His goal is to facilitate Winter's inclusion in a growing intergalactic civilization. But to do so he must bridge the gulf between his own views and those of the completely dissimilar culture that he encounters. Exploring questions of psychology, society, and human emotion in an alien world, The Left Hand of Darkness stands as a landmark achievement in the annals of science fiction. "
+  },
+  {
+    "title": "Foundation",
+    "author": "Isaac Asimov",
+    "isbn": "ISBN_13 9780553900347",
+    "image_url": "http://books.google.com/books/content?id=IwywDY4P6gsC&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "description": "For twelve thousand years the Galactic Empire has ruled supreme. Now it is dying. But only Hari Sheldon, creator of the revolutionary science of psychohistory, can see into the future--to a dark age of ignorance, barbarism, and warfare that will last thirty thousand years. To preserve knowledge and save mankind, Seldon gathers the best minds in the Empire--both scientists and scholars--and brings them to a bleak planet at the edge of the Galaxy to serve as a beacon of hope for a fututre generations. He calls his sanctuary the Foundation. But soon the fledgling Foundation finds itself at the mercy of corrupt warlords rising in the wake of the receding Empire. Mankind's last best hope is faced with an agonizing choice: submit to the barbarians and be overrun--or fight them and be destroyed."
+  },
+  {
+    "title": "Stranger in a Strange Land",
+    "author": "Robert A Heinlein",
+    "isbn": "ISBN_13 9780143111627",
+    "image_url": "http://books.google.com/books/content?id=p9UiDQAAQBAJ&printsec=frontcover&img=1&zoom=5&edge=curl&source=gbs_api",
+    "description": "A deluxe hardcover edition of the most famous science-fiction novel of all time--part of Penguin Galaxy, a collectible series of six sci-fi/fantasy classics, featuring a series introduction by Neil Gaiman A human raised on Mars, Valentine Michael Smith has just arrived on planet Earth. Among his people for the first time, he struggles to understand the social mores and prejudices of human nature that are so alien to him, while his own \"psi\" powers--including telepathy, clairvoyance, telekenesis, and teleportation--make him a type of messiah figure among humans. Stranger in a Strange Land grew from a cult favorite to a bestseller to a classic in a few short years. "
+  }
+]

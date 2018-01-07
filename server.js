@@ -3,7 +3,6 @@
 const pg = require('pg');
 const fs = require('fs');
 const express = require('express');
-
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
@@ -16,24 +15,43 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 app.use(express.static('./public'));
 
-
-app.get('/allBooks', (request, response) => {
+app.get('/', (request, response) =>{
+  response.sendFile('index.html', {root: './public'});
+})
+app.get('/api/v1/books', (request, response) => {
     client.query(
         `SELECT * FROM books;`
       )
         .then(function(result) {
-          response.send(result)
+          response.send(result.rows)
+        })
+        .catch(function(err) {
+          console.error(err);
+        });
+});
+app.get('/api/v1/books/:id', (request, response) => {
+    client.query(
+        `SELECT * FROM books WHERE book_id=$1;`,
+        [
+          request.params.id
+        ]
+      )
+        .then(function(result) {
+          response.send(result.rows)
         })
         .catch(function(err) {
           console.error(err);
         });
 });
 
-app.post('/addNewBook', (request, response) => {
-  client.query(`INSERT INTO books(title, authors) VALUES ($1, $2);`,
+app.post('/api/v1/books/addNewBook', (request, response) => {
+  client.query(`INSERT INTO books(title,author,isbn,image_url,description) VALUES ($1,$2,$3,$4,$5);`,
     [
       request.body.title,
-      request.body.authors
+      request.body.author,
+      request.body.isbn,
+      request.body.image_url,
+      request.body.description
     ]
   )
     .then(function() {
@@ -44,16 +62,19 @@ app.post('/addNewBook', (request, response) => {
     });
 });
 
-app.put('/updateBook/:id', (request, response) => {
+app.put('/api/v1/books/updateBook/:id', (request, response) => {
   client.query(
     `UPDATE books
     SET
-      title=$1, authors=$2
-    WHERE book_id=$3;
+      title=$1,author=$2,isbn=$3,image_url=$4,description=$5
+    WHERE book_id=$6;
     `,
     [
       request.body.title,
-      request.body.authors,
+      request.body.author,
+      request.body.isbn,
+      request.body.image_url,
+      request.body.description,
       request.params.id
     ]
   )
@@ -65,7 +86,7 @@ app.put('/updateBook/:id', (request, response) => {
     });
 });
 
-app.delete('/deleteBook/:id', (request, response) => {
+app.delete('/api/v1/books/deleteBook/:id', (request, response) => {
   client.query(
     `DELETE FROM books WHERE book_id=$1;`,
     [request.params.id]
@@ -78,7 +99,7 @@ app.delete('/deleteBook/:id', (request, response) => {
     });
 });
 
-app.delete('/deleteAllBooks', (request, response) => {
+app.delete('/api/v1/books/deleteAllBooks', (request, response) => {
   client.query(
     'DELETE FROM books;'
   )
@@ -99,7 +120,7 @@ app.listen(PORT, () => {
 
 //////// ** DATABASE LOADER ** ////////
 ////////////////////////////////////////
-function loadArticles() {
+function loadBooks() {
   client.query('SELECT COUNT(*) FROM books')
     .then(result => {
       if(!parseInt(result.rows[0].count)) {
@@ -107,9 +128,9 @@ function loadArticles() {
           JSON.parse(fd).forEach(ele => {
             client.query(`
               INSERT INTO
-              books(title, authors)
-              VALUES ($1, $2)`,
-              [ele.title, ele.authors]
+              books(title, author,isbn,image_url,description)
+              VALUES ($1,$2,$3,$4,$5)`,
+              [ele.title, ele.author,ele.isbn,ele.image_url,ele.description]
             )
           })
         })
@@ -122,10 +143,13 @@ function loadDB() {
     CREATE TABLE IF NOT EXISTS books (
       book_id SERIAL PRIMARY KEY,
       title VARCHAR(255) NOT NULL,
-      authors VARCHAR(255) NOT NULL)`
+      author VARCHAR(255) NOT NULL,
+      isbn VARCHAR(255) NOT NULL,
+      image_url VARCHAR(255) NOT NULL,
+      description VARCHAR(2055) NOT NULL)`
   )
     .then(() => {
-      loadArticles();
+      loadBooks();
     })
     .catch(err => {
       console.error(err);
