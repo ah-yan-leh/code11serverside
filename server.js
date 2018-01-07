@@ -6,7 +6,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const PORT = process.env.PORT || 3000;
 const app = express();
-const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
+const cors = require('cors');
+// const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
+
+const conString = 'postgres://postgres:postgres@localhost:5432/booklist';
 
 const client = new pg.Client(conString);
 
