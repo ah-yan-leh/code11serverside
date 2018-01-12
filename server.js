@@ -4,31 +4,24 @@ const pg = require('pg');
 const fs = require('fs');
 const express = require('express');
 const bodyParser = require('body-parser');
-const PORT = process.env.PORT || 3000;
+const PORT = process.env.PORT || 8080;
 const app = express();
 const cors = require('cors');
 // Add headers
 app.use(function (req, res, next) {
 
-  // Website you wish to allow to connect
-  res.setHeader('Access-Control-Allow-Origin', '*');
+  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
 
-  // Request methods you wish to allow
   res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
 
-  // Request headers you wish to allow
   res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
 
-  // Set to true if you need the website to include cookies in the requests sent
-  // to the API (e.g. in case you use sessions)
   res.setHeader('Access-Control-Allow-Credentials', true);
-
-  // Pass to next layer of middleware
   next();
 });
-// const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
+const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
 
-const conString = 'postgres://hryuwfriqtupwb:cf75445230798129c0d80c2b139243f2c1deae553f55b5f139d0c37ec7b5c696@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d6370nnudbrrjd';
+//const conString = 'postgres://hryuwfriqtupwb:cf75445230798129c0d80c2b139243f2c1deae553f55b5f139d0c37ec7b5c696@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d6370nnudbrrjd';
 
 const client = new pg.Client(conString);
 
