@@ -8,20 +8,10 @@ const PORT = process.env.PORT || 8080;
 const app = express();
 const cors = require('cors');
 // Add headers
-app.use(function (req, res, next) {
+app.use(cors())
+//const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
 
-  res.setHeader('Access-Control-Allow-Origin', 'http://localhost:3000');
-
-  res.setHeader('Access-Control-Allow-Methods', 'GET, POST, OPTIONS, PUT, PATCH, DELETE');
-
-  res.setHeader('Access-Control-Allow-Headers', 'X-Requested-With,content-type');
-
-  res.setHeader('Access-Control-Allow-Credentials', true);
-  next();
-});
-const conString = 'postgres://postgres:tabinLync@localhost:5432/booklist';
-
-//const conString = 'postgres://hryuwfriqtupwb:cf75445230798129c0d80c2b139243f2c1deae553f55b5f139d0c37ec7b5c696@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d6370nnudbrrjd';
+const conString = 'postgres://hryuwfriqtupwb:cf75445230798129c0d80c2b139243f2c1deae553f55b5f139d0c37ec7b5c696@ec2-50-19-126-219.compute-1.amazonaws.com:5432/d6370nnudbrrjd';
 
 const client = new pg.Client(conString);
 
